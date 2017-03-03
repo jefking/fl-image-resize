@@ -33,6 +33,7 @@
             "name": "[variables('storageAccountName')]",
             "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
+            "repoURL": "https://github.com/jefking/fl-image-resize.git",
             "properties": {
                 "accountType": "[parameters('storageAccountType')]"
             }
@@ -53,7 +54,7 @@
             "type": "Microsoft.Web/sites",
             "name": "[variables('functionAppName')]",
             "location": "[resourceGroup().location]",
-            "kind": "functionapp",            
+            "kind": "functionapp",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
@@ -88,7 +89,7 @@
                         }
                     ]
                 }
-            }          
+            }
         }
     ]
 }
