@@ -34,6 +34,7 @@
             "apiVersion": "2015-06-15",
             "location": "[resourceGroup().location]",
             "repoURL": "https://github.com/jefking/fl-image-resize.git",
+            "branch": "master",
             "properties": {
                 "accountType": "[parameters('storageAccountType')]"
             }
