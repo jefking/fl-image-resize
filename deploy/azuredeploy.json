@@ -12,7 +12,7 @@
     "variables": {
         "functionAppName": "[parameters('appName')]",
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
-        "repoURL": "https://github.com/AzureBytes/functionsstorsql.git",
+        "repoURL": "https://github.com/jefking/fl-image-resize.git",
         "branch": "master",
         "sku": "Standard",
         "workerSize": 0
