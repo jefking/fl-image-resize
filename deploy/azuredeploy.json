@@ -63,7 +63,6 @@
                 "hostingEnvironment": "",
                 "clientAffinityEnabled": false,
                 "siteConfig": {
-                    "AlwaysOn": true,
                     "appSettings": [
                         {
                             "name": "AzureWebJobsDashboard",
