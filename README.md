@@ -15,6 +15,8 @@ Create container called 'images'; this is where images need to be uploaded into.
 Here are the app settings that the function app depends on:
 
 - **ImageRepository** - The storage account which houses the images to be processed; and where the resized images are stored.
+- **ImageResize-Width** - The width the image is resized to.
+- **ImageResize-Height** - The height the image is resized to.
 
 ## Running Locally
 

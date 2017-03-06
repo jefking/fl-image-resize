@@ -89,6 +89,14 @@
                             "value": "6.5.0"
                         },
                         {
+                            "name": "ImageResize-Width",
+                            "value": 100
+                        },
+                        {
+                            "name": "ImageResize-Height",
+                            "value": 100
+                        },
+                        {
                             "name":"ImageRepository",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
                         }
