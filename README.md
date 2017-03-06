@@ -6,7 +6,9 @@ The easiest way to resize images stored in Blob Storage (on Azure); uses [ImageP
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
 
-See below for application setting values.
+## Configuration
+
+Create container called 'images'; this is where images need to be uploaded into. Container 'thumbnails' will be generated, and files will be output there.
 
 ## Application settings
 
