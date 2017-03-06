@@ -25,10 +25,8 @@
             "location": "[resourceGroup().location]",
             "properties": {
                 "name": "[variables('hostingPlanName')]",
-                "sku": "[variables('sku')]",
-                "workerSize": "[variables('workerSize')]",
-                "hostingEnvironment": "",
-                "numberOfWorkers": 1
+                "computeMode": "Dynamic",
+                "sku": "Dynamic"
             }
         },
         {
