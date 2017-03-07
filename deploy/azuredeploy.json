@@ -14,7 +14,7 @@
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
         "repoURL": "https://github.com/jefking/fl-image-resize.git",
         "branch": "master",
-        "storageAccountName": "[concat(parameters('appName'), uniquestring(resourceGroup().id))]",
+        "storageAccountName": "[concat(parameters('appName'), '-storage')]",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
     },
     "resources": [
