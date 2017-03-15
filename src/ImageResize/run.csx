@@ -18,5 +18,5 @@ public static void Run(Stream original, Stream resized, TraceWriter log)
 }
 
 
-private static string EnvAsInt(string name) => int.Parse(Env(name));
+private static int EnvAsInt(string name) => int.Parse(Env(name));
 private static string Env(string name) => System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
