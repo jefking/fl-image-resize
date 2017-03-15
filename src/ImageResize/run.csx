@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using ImageProcessor;
 
-private static Size size = new Size(Env("ImageResize-Width"), Env("ImageResize-Height"))
+private static Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
 
 public static void Run(Stream original, Stream resized, TraceWriter log)
 {
@@ -17,4 +17,6 @@ public static void Run(Stream original, Stream resized, TraceWriter log)
     }
 }
 
+
+private static string EnvAsInt(string name) => int.Parse(Env(name);
 private static string Env(string name) => System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
