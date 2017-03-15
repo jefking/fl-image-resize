@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using ImageProcessor;
 
-private static Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
+private static readonly Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
 
 public static void Run(Stream original, Stream resized, TraceWriter log)
 {
