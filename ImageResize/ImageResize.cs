@@ -1,10 +1,11 @@
 using System;
 using System.IO;
 using System.Drawing;
-using ImageProcessor;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
+
+using ImageProcessor;
 
 namespace serverlesslibrary
 {
@@ -14,8 +15,9 @@ namespace serverlesslibrary
 
         [FunctionName("ImageResize")]
         [return: Blob("thumbnails/{name}")]
-        public static void Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream myBlob, string name)
+        public static void Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, string name)
         {
+            var resized = new MemoryStream();
             using (var imageFactory = new ImageFactory())
             {
                 imageFactory
