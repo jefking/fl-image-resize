@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace serverlesslibrary
 {
-    public static class Resizer
+    public static class ImageResize
     {
         private static readonly Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
 
