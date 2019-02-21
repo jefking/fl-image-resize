@@ -12,6 +12,7 @@
     "variables": {
         "functionAppName": "[parameters('appName')]",
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
+        "applicationInsightsName": "[parameters('appName')]",
         "repoURL": "https://github.com/jefking/fl-image-resize.git",
         "branch": "master",
         "storageAccountName": "[concat('storage', uniquestring(resourceGroup().id))]",
@@ -21,7 +22,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2016-12-01",
             "location": "[resourceGroup().location]",
             "properties": {
                 "accountType": "Standard_LRS"
@@ -69,11 +70,7 @@
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~1"
-                        },
-                        {
-                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                            "value": "6.5.0"
+                            "value": "~2"
                         },
                         {
                             "name": "ImageResize-Width",
@@ -86,12 +83,18 @@
                         {
                             "name":"ImageRepository",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+                        },
+                        {
+                          "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                          "value": "[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]"
                         }
                     ]
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+                "[resourceId('microsoft.insights/components', variables('applicationInsightsName'))]"
             ],
             "resources": [
                 {
@@ -108,6 +111,19 @@
                     }
                 }
             ]
+        },
+        {
+          "apiVersion": "2018-05-01-preview",
+          "name": "[variables('applicationInsightsName')]",
+          "type": "microsoft.insights/components",
+          "location": "East US",
+          "tags": {
+            "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('applicationInsightsName'))]": "Resource"
+          },
+          "properties": {
+            "ApplicationId": "[variables('applicationInsightsName')]",
+            "Request_Source": "IbizaWebAppExtensionCreate"
+          }
         }
     ]
 }
