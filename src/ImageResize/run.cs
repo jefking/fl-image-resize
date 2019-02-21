@@ -6,6 +6,8 @@ using ImageProcessor;
 
 private static readonly Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
 
+[FunctionName("ImageResize")]
+[return: Blob("thumbnails/{name}")]
 public static void Run(Stream original, Stream resized)
 {
     using (var imageFactory = new ImageFactory())

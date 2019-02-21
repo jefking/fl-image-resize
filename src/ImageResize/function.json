@@ -6,13 +6,6 @@
       "direction": "in",
       "path": "images/{name}",
       "connection": "ImageRepository"
-    },
-    {
-      "type": "blob",
-      "name": "resized",
-      "path": "thumbnails/{name}",
-      "connection": "ImageRepository",
-      "direction": "out"
     }
   ],
   "disabled": false
