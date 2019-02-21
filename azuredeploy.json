@@ -22,10 +22,15 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2016-12-01",
+            "apiVersion": "2018-07-01",
+            "kind": "StorageV2",
             "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
             "properties": {
-                "accountType": "Standard_LRS"
+                "accessTier": "Hot"
             }
         },
         {
@@ -33,6 +38,7 @@
             "apiVersion": "2015-04-01",
             "name": "[variables('hostingPlanName')]",
             "location": "[resourceGroup().location]",
+            
             "properties": {
                 "name": "[variables('hostingPlanName')]",
                 "computeMode": "Dynamic",
