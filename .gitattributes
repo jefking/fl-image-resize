@@ -4,8 +4,8 @@
 # Custom for Visual Studio
 *.cs     diff=csharp
 
-**/bin
-**/obj
+ImageResize/bin/**
+ImageResize/obj/**
 
 # Standard to msysgit
 *.doc	 diff=astextplain
