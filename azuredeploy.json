@@ -31,7 +31,25 @@
             },
             "properties": {
                 "accessTier": "Hot"
-            }
+            },
+            "resources": [
+                {
+                    "type": "blobServices/containers",
+                    "name": "default/thumbnails",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageAccountName')]"
+                    ]
+                },
+                {
+                    "type": "blobServices/containers",
+                    "name": "default/images",
+                    "apiVersion": "2018-07-01",
+                    "dependsOn": [
+                        "[variables('storageAccountName')]"
+                    ]
+                }
+            ]
         },
         {
             "type": "Microsoft.Web/serverfarms",
