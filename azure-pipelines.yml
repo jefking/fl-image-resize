@@ -18,7 +18,7 @@ steps:
 
 - task: AzureResourceGroupDeployment@2
   inputs:
-    azureSubscription: 
+    azureSubscription: 011fd5e2-60c9-4a71-8bcd-659a9fbbfd4c
     action: 'Create Or Update Resource Group'
     resourceGroupName: ts-demo
     location: West US
