@@ -15,3 +15,14 @@ variables:
 steps:
 - script: dotnet build ./ImageResize --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: AzureResourceGroupDeployment@2
+  inputs:
+    azureSubscription: 
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: ts-demo
+    location: West US
+    templateLocation: azuredeploy.json
+    overrideParameters: appName=jktsdemo7812
+    deploymentMode: 'Incremental'
+    deploymentName: 'automated'
