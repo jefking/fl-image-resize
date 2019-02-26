@@ -16,7 +16,7 @@ namespace serverlesslibrary
 
         [FunctionName("ImageResize")]
         [return: Blob("thumbnails/{name}")]
-        public static void Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, string name)
+        public static Stream Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, string name)
         {
             var resized = new MemoryStream();
             using (var image = Image.Load(original))
@@ -25,6 +25,8 @@ namespace serverlesslibrary
                     //.Resize(size)
                     .SaveAsJpeg(resized);
             }
+
+            return resized;
         }
 
 
