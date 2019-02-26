@@ -13,20 +13,15 @@ namespace serverlesslibrary
     {
         private static readonly System.Drawing.Size size = new System.Drawing.Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
 
-
         [FunctionName("ImageResize")]
-        [return: Blob("thumbnails/{name}")]
-        public static Stream Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, string name)
+        public static void Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, [Blob("thumbnails/{name}", FileAccess.Write)] Stream resized)
         {
-            var resized = new MemoryStream();
             using (var image = Image.Load(original))
             {
                 image
                     //.Resize(size)
                     .SaveAsJpeg(resized);
             }
-
-            return resized;
         }
 
 
