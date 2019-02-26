@@ -1,29 +1,29 @@
 using System;
 using System.IO;
-using System.Drawing;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-using ImageProcessor;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Processing;
 
 namespace serverlesslibrary
 {
     public static class ImageResize
     {
-        private static readonly Size size = new Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
+        private static readonly System.Drawing.Size size = new System.Drawing.Size(EnvAsInt("ImageResize-Width"), EnvAsInt("ImageResize-Height"));
+
 
         [FunctionName("ImageResize")]
         [return: Blob("thumbnails/{name}")]
         public static void Run([BlobTrigger("images/{name}", Connection = "ImageRepository")]Stream original, string name)
         {
             var resized = new MemoryStream();
-            using (var imageFactory = new ImageFactory())
+            using (var image = Image.Load(original))
             {
-                imageFactory
-                    .Load(original)
-                    .Resize(size)
-                    .Save(resized);
+                image
+                    //.Resize(size)
+                    .SaveAsJpeg(resized);
             }
         }
 
