@@ -1,6 +1,6 @@
 # Image Resize Function
 
-The easiest way to resize images stored in Blob Storage (on Azure); uses [ImageProcessor](http://imageprocessor.org/)
+The easiest way to resize images stored in Blob Storage (on Azure); uses [ImageSharp](https://github.com/SixLabors/ImageSharp)
 
 ## Quick Deploy to Azure
 
