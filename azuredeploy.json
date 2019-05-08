@@ -7,6 +7,26 @@
             "metadata": {
                 "description": "The name of the function app that you wish to create."
             }
+        },
+        "height":
+        {
+            "type": "int",
+            "defaultValue": 100,
+            "minValue": 1,
+            "maxValue": 7680,
+            "metadata": {
+                "description": "The height of the image when resized."
+            }
+        },
+        "width":
+        {
+            "type": "int",
+            "defaultValue": 100,
+            "minValue": 1,
+            "maxValue": 7680,
+            "metadata": {
+                "description": "The width of the image when resized."
+            }
         }
     },
     "variables": {
@@ -98,11 +118,11 @@
                         },
                         {
                             "name": "ImageResize-Width",
-                            "value": 100
+                            "value": "[parameters('width')]"
                         },
                         {
                             "name": "ImageResize-Height",
-                            "value": 100
+                            "value": "[parameters('height')]"
                         },
                         {
                             "name":"ImageRepository",
